@@ -1,6 +1,8 @@
 import { useState } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import Icon from './Icon';
+import { useTheme } from '../hooks/useTheme';
+import logo from '../assets/logo.svg';
 
 const NAV_ITEMS = [
   ['Home', '/'], ['Sports', '/sports'], ['Athletes', '/athletes'],
@@ -10,12 +12,13 @@ const NAV_ITEMS = [
 
 export default function Nav() {
   const [open, setOpen] = useState(false);
+  const { theme, toggle } = useTheme();
+
   return (
     <>
       <nav className="nav">
         <Link to="/" className="nav-logo">
-          <span className="brand-mark">A</span>
-          <span className="word">ATHLECO</span>
+          <img src={logo} alt="Athleco" className="nav-logo-img" />
         </Link>
         <div className="nav-links">
           {NAV_ITEMS.map(([label, to]) => (
@@ -29,9 +32,12 @@ export default function Nav() {
             </NavLink>
           ))}
         </div>
-        <Link to="/contact" className="btn btn-primary btn-sm" style={{ marginLeft: 'auto' }}>
-          Discover Talent
-        </Link>
+        <div className="nav-actions">
+          <button className="theme-toggle" onClick={toggle} aria-label="Toggle theme">
+            <Icon name={theme === 'dark' ? 'sun' : 'moon'} size={16} />
+          </button>
+          <Link to="/contact" className="btn btn-primary btn-sm">Discover Talent</Link>
+        </div>
         <button className="nav-burger" onClick={() => setOpen(!open)} aria-label="Menu">
           <span></span>
         </button>
@@ -44,6 +50,10 @@ export default function Nav() {
                 {label}
               </Link>
             ))}
+            <button className="mobile-theme-toggle" onClick={toggle}>
+              <Icon name={theme === 'dark' ? 'sun' : 'moon'} size={16} />
+              {theme === 'dark' ? 'Light Mode' : 'Dark Mode'}
+            </button>
           </div>
         </div>
       )}

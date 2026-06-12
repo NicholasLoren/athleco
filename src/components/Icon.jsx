@@ -25,6 +25,8 @@ export default function Icon({ name, size = 20, color = 'currentColor', sw = 2 }
     whistle: <g><path d="M21 9a6 6 0 1 1-6-6h6v6Z" /><circle cx="9" cy="15" r="3" /></g>,
     flag: <g><path d="M4 22V4s2-2 6-2 6 2 10 0v12c-4 2-6 0-10 0s-6 2-6 2Z" /></g>,
     sparkle: <path d="M12 3l1.6 5.4L19 10l-5.4 1.6L12 17l-1.6-5.4L5 10l5.4-1.6L12 3z" />,
+    sun: <g><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></g>,
+    moon: <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>,
   };
   return (
     <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color}
